@@ -1,0 +1,10 @@
+Anaconda  | 100
+Basilisk  | 90
+Cottonmouth  | 80
+Diamondback  | 70
+Cobra  | 60
+Copperhead  | 50
+Python  | 40
+Boa  | 30
+Rattlesnake  | 20
+Garter  | 10
