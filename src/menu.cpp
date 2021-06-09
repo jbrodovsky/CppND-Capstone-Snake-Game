@@ -39,8 +39,6 @@ void Menu::WaitForInput(){
         case 'n' :
             std::cout<<"New Game!\n";
             RunGame();
-            sort(high_scores.begin(), high_scores.end(), [](Player& A, Player& B){ return (B.GetScore() < A.GetScore());});
-            high_scores.pop_back();
             WriteHighScores();
             break;
         case 's' :
@@ -117,7 +115,6 @@ void Menu::RunGame(){
         lowscorer.name = "Low Score";
         lowscorer.SetScore(1);
     }
-    std::cout << "Marker...\n";
         
     my_game.Run(controller, renderer, kMsPerFrame);
     if(lowscorer.GetScore() < my_game.GetScore() || high_scores.size() < 10){
@@ -126,5 +123,9 @@ void Menu::RunGame(){
         std::cin >> highscorer.name;
         highscorer.SetScore(my_game.GetScore());
         high_scores.push_back(highscorer);
+    }
+    sort(high_scores.begin(), high_scores.end(), [](Player& A, Player& B){ return (B.GetScore() < A.GetScore());});
+    while(high_scores.size() > 10){
+      high_scores.pop_back();
     }
 }
