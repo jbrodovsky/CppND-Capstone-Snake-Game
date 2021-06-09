@@ -21,13 +21,11 @@ int main() {
   std::cout << "Score: " << game.GetScore() << "\n";
   std::cout << "Size: " << game.GetSize() << "\n";
   */
-  Menu M;
+  Menu M("../src/high_scores.txt");
   M.Display();
   do {
     M.WaitForInput();
-  }while(M.is_running);
+  }while(M.is_running);  
   
-  
-  return 0;
-  
+  return 0;  
 }

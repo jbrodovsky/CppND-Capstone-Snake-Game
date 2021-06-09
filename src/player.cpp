@@ -1,6 +1,8 @@
 #include "player.h"
 #include <sstream>
 
+Player::Player(){}
+
 Player::Player(std::string name_)
     :name{name_}, score{0}
     {

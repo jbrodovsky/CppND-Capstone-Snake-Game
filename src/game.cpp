@@ -2,6 +2,14 @@
 #include <iostream>
 #include "SDL.h"
 
+Game::Game()
+    : snake(100, 100),
+      engine(dev()),
+      random_w(0, static_cast<int>(100 - 1)),
+      random_h(0, static_cast<int>(100 - 1)) {
+  PlaceFood();
+}
+
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
@@ -17,13 +25,13 @@ void Game::Run(Controller const &controller, Renderer &renderer,
   Uint32 frame_end;
   Uint32 frame_duration;
   int frame_count = 0;
-  bool running = true;
+  //bool running = true;
 
-  while (running) {
+  while (snake.alive) {
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
+    controller.HandleInput(snake.alive, snake);
     Update();
     renderer.Render(snake, food);
 
